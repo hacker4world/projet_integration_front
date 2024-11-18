@@ -1,0 +1,179 @@
+<form role="form" [formGroup]="signupForm" (ngSubmit)="onFormSubmit()">
+  <div style="display: flex; justify-content: space-between">
+    <div class="mb-3" style="width: 48%">
+      <input
+        type="text"
+        [ngClass]="['form-control', isFieldInvalid('name') ? 'is-invalid' : '']"
+        placeholder="Name"
+        formControlName="name"
+        data-bs-toggle="tooltip"
+        [title]="isFieldInvalid('name') ? 'Name is required' : ''"
+      />
+    </div>
+
+    <div class="mb-3" style="width: 48%">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Last name"
+        formControlName="lastName"
+        [ngClass]="[
+          'form-control',
+          isFieldInvalid('lastName') ? 'is-invalid' : ''
+        ]"
+        data-bs-toggle="tooltip"
+        [title]="isFieldInvalid('lastName') ? 'Last name is required' : ''"
+      />
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between">
+    <div class="mb-3" style="width: 48%">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Age"
+        aria-label="age"
+        formControlName="age"
+        [ngClass]="['form-control', isFieldInvalid('age') ? 'is-invalid' : '']"
+        data-bs-toggle="tooltip"
+        [title]="isFieldInvalid('age') ? 'Age must be between 20 and 60' : ''"
+      />
+    </div>
+
+    <div class="mb-3" style="width: 48%">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="RIB"
+        aria-label="rib"
+        formControlName="rib"
+        [ngClass]="['form-control', isFieldInvalid('rib') ? 'is-invalid' : '']"
+        data-bs-toggle="tooltip"
+        [title]="isFieldInvalid('rib') ? 'RIB is required' : ''"
+      />
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between">
+    <div class="mb-3" style="width: 48%">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Address"
+        aria-label="address"
+        formControlName="address"
+        [ngClass]="[
+          'form-control',
+          isFieldInvalid('address') ? 'is-invalid' : ''
+        ]"
+        data-bs-toggle="tooltip"
+        [title]="isFieldInvalid('address') ? 'Address is required' : ''"
+      />
+    </div>
+
+    <div class="form-group" style="width: 48%">
+      <select
+        class="form-control"
+        id="exampleFormControlSelect2"
+        *ngIf="signupMode == 'employee'"
+        formControlName="employeeRole"
+        data-bs-toggle="tooltip"
+        [ngClass]="[
+          'form-control',
+          signupForm.get('employeeRole')?.value == '' && isFormSubmitted
+            ? 'is-invalid'
+            : ''
+        ]"
+        [title]="
+          signupForm.get('employeeRole')?.value == '' && isFormSubmitted
+            ? 'Employee role is required'
+            : ''
+        "
+      >
+        <option [selected]="true" value="">Select your role</option>
+        <option value="1">2</option>
+        <option value="1">3</option>
+        <option value="1">4</option>
+        <option value="1">5</option>
+      </select>
+
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Grade"
+        *ngIf="signupMode == 'manager'"
+        formControlName="managerGrade"
+        data-bs-toggle="tooltip"
+        [ngClass]="[
+          'form-control',
+          signupForm.get('managerGrade')?.value == '' && isFormSubmitted
+            ? 'is-invalid'
+            : ''
+        ]"
+        [title]="
+          signupForm.get('managerGrade')?.value == '' && isFormSubmitted
+            ? 'Manager grade is required'
+            : ''
+        "
+      />
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Email address"
+      aria-label="email"
+      formControlName="email"
+      [ngClass]="['form-control', isFieldInvalid('email') ? 'is-invalid' : '']"
+      data-bs-toggle="tooltip"
+      [title]="
+        isFieldInvalid('email') ? 'Email is required and must be valid' : ''
+      "
+    />
+  </div>
+
+  <div class="mb-3">
+    <input
+      [type]="passwordMode"
+      class="form-control"
+      placeholder="Password"
+      aria-label="email"
+      formControlName="password"
+      [ngClass]="[
+        'form-control',
+        isFieldInvalid('password') ? 'is-invalid' : ''
+      ]"
+      data-bs-toggle="tooltip"
+      [title]="
+        isFieldInvalid('password')
+          ? 'Password must be atleast 8 characters long'
+          : ''
+      "
+    />
+  </div>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="fcustomCheck1"
+      #passwordCheck
+      (change)="changePasswordMode(passwordCheck)"
+    />
+    <label class="custom-control-label" for="customCheck1">Show password</label>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">
+      Create account
+    </button>
+  </div>
+
+  <p class="text-sm mt-3 mb-0">
+    Already have an account?
+    <a routerLink="../login" class="text-dark font-weight-bolder">Login</a>
+  </p>
+</form>

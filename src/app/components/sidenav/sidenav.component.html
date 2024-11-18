@@ -1,0 +1,148 @@
+<aside
+  class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+  id="sidenav-main"
+>
+  <div class="sidenav-header">
+    <i
+      class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+      aria-hidden="true"
+      id="iconSidenav"
+    ></i>
+    <a class="navbar-brand m-0">
+      <img
+        src="https://data.gov.tn/media/images/SONEDE-removebg-preview_1.2e16d0ba.fill-341x308.png"
+        class="navbar-brand-img h-100"
+        alt="main_logo"
+      />
+      <span class="ms-1 font-weight-bold">PORTAIL SONEDE</span>
+    </a>
+  </div>
+  <hr class="horizontal dark mt-0" />
+  <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '1' }"
+          routerLink="../subscription"
+        >
+          <span class="nav-link-text ms-1">
+            <i class="fa-solid fa-list" style="color: #5e72e4"></i>
+            Subscription</span
+          >
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '2' }"
+          routerLink="../unpaid-bills"
+        >
+          <span class="nav-link-text ms-1"
+            ><i
+              class="fa-solid fa-money-check-dollar"
+              style="margin-right: 5px; color: #2dce89"
+            ></i
+            >Unpaid bills</span
+          >
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '3' }"
+          routerLink="../notifications"
+        >
+          <span class="nav-link-text ms-1">
+            <i
+              class="fa-solid fa-bell"
+              style="margin-right: 5px; color: #f5573f"
+            ></i
+            >Notifications</span
+          >
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '4' }"
+          routerLink="../pending-requests"
+        >
+          <span class="nav-link-text ms-1"
+            ><i
+              class="fa-solid fa-check"
+              style="margin-right: 5px; color: #11cdef"
+            ></i
+            >Pending requests</span
+          >
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '5' }"
+          routerLink="../rejected-requests"
+        >
+          <span class="nav-link-text ms-1"
+            ><i
+              class="fa-solid fa-xmark"
+              style="margin-right: 5px; color: #fb9440"
+            ></i
+            >Rejected requests</span
+          >
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '6' }"
+          routerLink="../profile"
+        >
+          <span class="nav-link-text ms-1"
+            ><i
+              class="fa-solid fa-user"
+              style="margin-right: 5px; color: #344767"
+            ></i
+            >Profile</span
+          >
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activePage == '7' }"
+          routerLink="../details"
+        >
+          <span class="nav-link-text ms-1"
+            ><i
+              class="fa-solid fa-book"
+              style="margin-right: 5px; color: #8089c2"
+            ></i
+            >Details</span
+          >
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../pages/sign-up.html">
+          <span class="nav-link-text ms-1" style="color: red">
+            <i
+              class="fa-solid fa-right-from-bracket"
+              style="margin-right: 5px"
+            ></i
+            >Logout</span
+          >
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="sidenav-footer mx-3">
+    <a
+      href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard"
+      target="_blank"
+      class="btn btn-dark btn-sm w-100 mb-3"
+      >Documentation</a
+    >
+  </div>
+</aside>

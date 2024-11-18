@@ -1,0 +1,40 @@
+<div class="nav-wrapper position-relative end-0">
+  <ul class="nav nav-pills nav-fill p-1" role="tablist">
+    <li class="nav-item">
+      <a
+        [ngClass]="[
+          'nav-link',
+          'mb-0',
+          'px-0',
+          'py-1',
+          signupMode == 'employee' ? 'active' : ''
+        ]"
+        data-bs-toggle="tab"
+        role="tab"
+        aria-controls="employee"
+        aria-selected="true"
+        (click)="changeMode('employee')"
+      >
+        <strong>Employee</strong>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        [ngClass]="[
+          'nav-link',
+          'mb-0',
+          'px-0',
+          'py-1',
+          signupMode == 'manager' ? 'active' : ''
+        ]"
+        data-bs-toggle="tab"
+        role="tab"
+        aria-controls="manager"
+        aria-selected="false"
+        (click)="changeMode('manager')"
+      >
+        <strong>Manager</strong>
+      </a>
+    </li>
+  </ul>
+</div>
