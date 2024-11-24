@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Modify your profile</h2>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <label for="firstName">First Name:</label>
+    <input id="firstName" type="text" [(ngModel)]="profile.firstName" name="firstName" required />
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" type="text" [(ngModel)]="profile.lastName" name="lastName" required />
+
+    <label for="age">Age:</label>
+    <input id="age" type="number" [(ngModel)]="profile.age" name="age" required />
+
+    <label for="adress">Address:</label>
+    <input id="adress" type="text" [(ngModel)]="profile.address" name="address" required />
+
+    <div class="image-preview">
+      <img *ngIf="profileImage" [src]="profileImage" alt="wait image here" />
+    </div>
+
+    <label for="imageUpload">Image:</label>
+    <input id="imageUpload" type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+    <button type="submit">Modify</button>
+  </form>
+</div>
