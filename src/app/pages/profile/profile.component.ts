@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
     userId:0,
     firstName:'',
     lastName:'',
+    email: '',
     age:0,
     address:''
   };
@@ -30,16 +31,27 @@ export class ProfileComponent implements OnInit {
     this.profile.userId = userId;
 
   //njib les informations eli fel profil
-    this.profileService.getProfileDetails(userId).subscribe((data: any) => {
-      this.profile = {...this.profile, ...data['data']};
-    })
+    this.profileService.getProfileDetails(userId).subscribe(
+      (response: any) => {
+        if (response && response.data) {this.profile = {
+          ...this.profile,
+            ...response.data,
+          };
+        }
+      },
+      (error) => {
+        console.error('Error', error);
+      }
+    );
     //njib el image du profil
-    this.profileService.getImage(userId).subscribe((imageBlob: Blob) => {
-      this.convertBlobToImage(imageBlob);
-
-    })
-
-
+    this.profileService.getImage(userId).subscribe(
+      (imageBlob: Blob) => {
+        this.convertBlobToImage(imageBlob);
+      },
+      (error) => {
+        console.error('Error image', error);
+      }
+    );
   }
   loadUserProfile(): void {
     this.profileService.getProfileDetails(this.profile.userId).subscribe(

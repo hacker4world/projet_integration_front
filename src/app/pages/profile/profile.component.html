@@ -8,6 +8,8 @@
 
     <label for="lastName">Last Name:</label>
     <input id="lastName" type="text" [(ngModel)]="profile.lastName" name="lastName" required />
+    <label for="email">Email:</label>
+    <input id="email" type="email" [(ngModel)]="profile.email" name="email" readonly/>
 
     <label for="age">Age:</label>
     <input id="age" type="number" [(ngModel)]="profile.age" name="age" required />

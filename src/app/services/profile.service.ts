@@ -11,7 +11,7 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   getProfileDetails(userId: number):Observable<any> {
-    return this.http.get(`${this.apiUrl}/profile/details/${userId}`);
+    return this.http.get<any>(`${this.apiUrl}/profile/details/${userId}`);
   }
 
   updateProfile(profileData: any): Observable<any> {
