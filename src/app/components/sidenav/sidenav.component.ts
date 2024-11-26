@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Link } from '../../pages/dashboard/links/link.interface';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,5 +11,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidenav.component.css',
 })
 export class SidenavComponent {
-  @Input({ required: true }) public activePage: string = '';
+  @Input({ required: true }) public links: Link[] = [];
+  @Input({ required: true }) public title: string = '';
 }

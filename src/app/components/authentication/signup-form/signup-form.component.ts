@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,8 @@ import {
 import { RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EmployeeSignup } from '../../../dto/authentication/EmployeeSignup';
+import { ManagerSignup } from '../../../dto/authentication/ManagerSignup';
 
 @Component({
   selector: 'signup-form',
@@ -19,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class SignupFormComponent {
   @Input('signupMode') public signupMode: string = '';
+  @Output() signup = new EventEmitter<EmployeeSignup | ManagerSignup>();
 
   constructor(private readonly authenticationService: AuthenticationService) {}
 
@@ -63,12 +66,34 @@ export class SignupFormComponent {
       this.signupMode == 'employee' &&
       this.signupForm.get('employeeRole')?.value != ''
     ) {
-      alert('employee login');
+      let signupData: EmployeeSignup = {
+        name: this.signupForm.get('name')?.value,
+        lastName: this.signupForm.get('lastName')?.value,
+        age: this.signupForm.get('age')?.value,
+        RIB: this.signupForm.get('rib')?.value,
+        adress: this.signupForm.get('address')?.value,
+        email: this.signupForm.get('email')?.value,
+        password: this.signupForm.get('password')?.value,
+        role_employer: this.signupForm.get('employeeRole')?.value,
+      };
+
+      this.signup.emit(signupData);
     } else if (
       this.signupMode == 'manager' &&
       this.signupForm.get('managerGrade')?.value != ''
     ) {
-      alert('manager signup');
+      let signupData: ManagerSignup = {
+        name: this.signupForm.get('name')?.value,
+        lastName: this.signupForm.get('lastName')?.value,
+        age: this.signupForm.get('age')?.value,
+        RIB: this.signupForm.get('rib')?.value,
+        adress: this.signupForm.get('address')?.value,
+        email: this.signupForm.get('email')?.value,
+        password: this.signupForm.get('password')?.value,
+        grade: this.signupForm.get('managerGrade')?.value,
+      };
+
+      this.signup.emit(signupData);
     }
   }
 

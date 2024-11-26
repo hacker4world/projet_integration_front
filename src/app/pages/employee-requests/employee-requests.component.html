@@ -1,0 +1,208 @@
+<main class="main-content position-relative border-radius-lg">
+  <div class="container-fluid py-4">
+    <br />
+    <div class="row" style="margin-left: 18rem">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h6>Pending employees</h6>
+          </div>
+          <div class="card-header">
+            <div class="table-responsive">
+              <table class="table align-items-center mb-0">
+                <tbody>
+                  <div
+                    class="alert alert-warning"
+                    role="alert"
+                    style="color: white"
+                    *ngIf="pendingEmployees.length == 0"
+                  >
+                    There are no requests at the moment
+                  </div>
+                  <tr
+                    *ngFor="let pendingEmployee of pendingEmployees"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    (click)="showEmployeeDetails(pendingEmployee.email)"
+                  >
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{
+                        pendingEmployee.firstName
+                      }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{
+                        pendingEmployee.lastName
+                      }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{
+                        pendingEmployee.email
+                      }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">{{
+                        pendingEmployee.employeeRole
+                      }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Employee details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; justify-content: space-between">
+          <div class="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.firstName"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.lastName"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.email"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.age"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between">
+          <div class="form-group">
+            <label>Role</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.employeeRole"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.adress"
+              readonly
+            />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between">
+          <div class="form-group">
+            <label>RIB</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="selectedEmployee?.rib"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label>Email verification status</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="name@example.com"
+              [value]="
+                selectedEmployee?.emailVerified
+                  ? 'email verified'
+                  : 'email not verified'
+              "
+              readonly
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn bg-gradient-secondary"
+          data-bs-dismiss="modal"
+          (click)="handleEmployeeRequest(false)"
+          readonly
+        >
+          Refuse
+        </button>
+        <button
+          type="button"
+          class="btn bg-gradient-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          readonly
+          (click)="handleEmployeeRequest(true)"
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

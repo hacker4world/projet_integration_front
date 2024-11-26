@@ -12,8 +12,20 @@
             [signupMode]="signupMode"
             (signupModeChange)="handleModeChange($event)"
           ></signup-switch>
+
           <div class="card-body">
-            <signup-form [signupMode]="signupMode"></signup-form>
+            <div
+              class="alert alert-danger"
+              role="alert"
+              style="text-align: center; color: white"
+              *ngIf="showSignupError"
+            >
+              {{ signupError }}
+            </div>
+            <signup-form
+              [signupMode]="signupMode"
+              (signup)="handleSignup($event)"
+            ></signup-form>
           </div>
         </div>
       </div>
